@@ -10,14 +10,17 @@ from torchvision import models
 # Device Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Model Architecture
-model = models.resnet18(pretrained=False)
-model.fc = nn.Linear(512, 2)  # 2 classes: Normal / Pneumonia
+# Model Architecture & Loading
+@st.cache_resource
+def load_model():
+    model = models.resnet18(pretrained=False)
+    model.fc = nn.Linear(512, 2)  # 2 classes: Normal / Pneumonia
+    model.load_state_dict(torch.load("model.pth", map_location=device))
+    model.to(device)
+    model.eval()
+    return model
 
-# Load Trained Weights
-model.load_state_dict(torch.load("model.pth", map_location=device))
-model.to(device)
-model.eval()
+model = load_model()
 
 classes = ['NORMAL', 'PNEUMONIA']
 
