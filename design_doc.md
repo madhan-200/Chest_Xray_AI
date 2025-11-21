@@ -1,3 +1,33 @@
+# Chest X-Ray Classification - Technical Report
+
+## Part 1: Understanding & Setup
+
+### 1. Data Exploration & Preprocessing Strategy
+*   **DICOM Handling**: In a real clinical setting, X-rays come in DICOM format. I would use `pydicom` to read these files, extract the pixel array, and apply windowing/leveling (VOI LUT) to convert them to standard 8-bit grayscale images (PNG/JPG) for the model.
+*   **Normalization**: I use ImageNet statistics (`mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]`) because I am using a pre-trained ResNet. This ensures the input distribution matches what the model expects.
+*   **Resizing**: Images are resized to **224x224** to match the standard input size of ResNet18.
+*   **Augmentation**: To prevent overfitting, I apply:
+    *   `RandomHorizontalFlip`: Mirrors the X-ray (common variance).
+    *   `RandomRotation(10)`: Simulates slight patient misalignment.
+*   **Data Split & Leakage**:
+    *   **Strategy**: 70% Train, 15% Validation, 15% Test.
+    *   **Patient Leakage**: Crucially, the split must be done at the **Patient ID** level, not the Image ID level. If a patient has multiple X-rays, all of them must go into the *same* set (e.g., all in Train). If we split by image, the model might "memorize" a patient's specific bone structure in Train and recognize it in Test, leading to artificially high accuracy (Data Leakage).
+
+## Part 2: Modelling Choices
+
+### 1. Architecture: ResNet18 (Transfer Learning)
+*   **Why ResNet18?**:
+    *   **Efficiency**: It is lightweight and fast, making it suitable for deployment on hospital servers with limited resources or even edge devices.
+    *   **Performance**: Residual connections prevent the vanishing gradient problem, allowing for effective deep feature extraction.
+    *   **Transfer Learning**: By initializing with **ImageNet weights**, the model starts with a robust understanding of edges, textures, and shapes. We only need to fine-tune it to recognize the specific patterns of Pneumonia (consolidations, opacities).
+*   **Hyperparameters**:
+    *   **Batch Size**: 16 (Safe for standard GPUs).
+    *   **Learning Rate**: 0.001 (Standard starting point for Adam optimizer).
+    *   **Optimizer**: Adam (Adaptive learning rates help converge faster than SGD).
+    *   **Loss Function**: CrossEntropyLoss (Standard for multi-class classification).
+
+---
+
 # Part 3: Discussion / System Design
 
 ## 1. Integration into Hospital PACS (Picture Archiving and Communication System)
