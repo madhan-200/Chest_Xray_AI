@@ -67,5 +67,5 @@ The model is trained on a dataset of Chest X-Ray images (Anterior-Posterior).
 *   **Output**: Prediction label, Confidence score, and Grad-CAM visualization.
 
 ## Author
-**MADHANKUMAR S**
-*   Healthcare AI/ML Developer
+*   MADHANKUMAR S 
+Building Agentic workflow Builder with No-Code, AI Agents & Automation | React & N8N Developer | Top Winner – Adya AI Vanij Builder League 2025 | B.Tech Information Technology @ BIT
