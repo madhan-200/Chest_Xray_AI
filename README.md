@@ -66,6 +66,16 @@ The model is trained on a dataset of Chest X-Ray images (Anterior-Posterior).
 *   **Classes**: NORMAL, PNEUMONIA.
 *   **Output**: Prediction label, Confidence score, and Grad-CAM visualization.
 
+<img width="1919" height="1079" alt="Screenshot 2025-11-21 234955" src="https://github.com/user-attachments/assets/19df3f87-1ec4-4422-b384-42f02a236ed0" />
+<img width="1919" height="1013" alt="Screenshot 2025-11-21 231150" src="https://github.com/user-attachments/assets/b7e5d7bc-852f-49a5-a315-362d872a25e5" />
+<img width="1912" height="1077" alt="Screenshot 2025-11-21 231209" src="https://github.com/user-attachments/assets/0d2cf8d2-d538-47e5-9cab-7f1113027bfc" />
+<img width="388" height="345" alt="Screenshot 2025-11-22 005939" src="https://github.com/user-attachments/assets/f54e0fcb-d300-47e7-8d18-c7e0dd84ed53" />
+<img width="790" height="641" alt="Screenshot 2025-11-22 001137" src="https://github.com/user-attachments/assets/f7acbbff-773d-4098-ae2d-8f639c533b67" />
+<img width="1038" height="439" alt="Screenshot 2025-11-22 001238" src="https://github.com/user-attachments/assets/8f9d4715-a6a5-4fbc-81ab-bf3c2fad4e23" />
+<img width="626" height="292" alt="Screenshot 2025-11-21 204838" src="https://github.com/user-attachments/assets/30bc0d0b-5255-40ba-bbc9-4757f635ce01" />
+<img width="515" height="156" alt="Screenshot 2025-11-21 185611" src="https://github.com/user-attachments/assets/4ddd9538-c819-456a-a64e-b076da6193ab" />
+
+
 ## Author
 *   MADHANKUMAR S 
 Building Agentic workflow Builder with No-Code, AI Agents & Automation | React & N8N Developer | Top Winner – Adya AI Vanij Builder League 2025 | B.Tech Information Technology @ BIT
